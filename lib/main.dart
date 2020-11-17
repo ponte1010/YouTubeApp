@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
             centerTitle: false,
             leading: Icon(Icons.videocam),
             title: const Text(
-              'YouTube App',
+              '国振チャンネル',
             ),
             actions: <Widget>[
               SizedBox(
@@ -44,90 +44,91 @@ class MyApp extends StatelessWidget {
           ),
           body: Container(
             child: Column(
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: <Widget>[
-                        SizedBox(
-                          width: 60,
-                          height: 60,
-                          child: Image.network(
-                            'https://avatarbox.net/avatars/img4/the_simpsons_homer_thinking_avatar_picture_52539.png',
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: <Widget>[
+                      SizedBox(
+                        width: 60,
+                        height: 60,
+                        child: Image.network(
+                          'https://lh3.googleusercontent.com/proxy/AMKGC9kJM4uzmZwBDsVN7cozej_8LAU8-Kd69xwLbTVQcoxrFB-rOhoz5xxmUbQu948L2O03Im-kECSNwHPNaXvgbKiRFwqAkOXyhs6imVmBBPUpjxz5G2MUMhheV6Es5Xo',
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 8,
+                      ),
+                      Column(
+                        children: <Widget>[
+                          const Text(
+                            '国振チャンネル',
                           ),
-                        ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            const Text(
-                              'YouTube App',
+                          FlatButton(
+                            child: Row(
+                              children: <Widget>[
+                                Text(
+                                  'SUBSCRIBE',
+                                  style: TextStyle(color: Colors.red),
+                                ),
+                              ],
                             ),
-                            FlatButton(
-                              child: Row(
-                                children: <Widget>[
-                                  Text('SUBSCRIBE'),
-                                ],
+                            onPressed: () {
+                              // todo
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: items.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(
+                        onTap: () async {
+                          // TODO: 画面遷移
+                          await Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VideoDetailPage()),
+                          );
+                        },
+                        contentPadding: EdgeInsets.all(8),
+                        leading: Image.network(
+                          'https://i.ytimg.com/vi/HuligzAKHw0/maxresdefault.jpg',
+                        ),
+                        title: Column(
+                          children: <Widget>[
+                            Text(
+                              '中華のプロがレシピ公開！！超人気これが神のチャーハン【国振西新井】',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w500,
                               ),
-                              onPressed: () {
-                                // todo
-                              },
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Text(
+                                  '157K views - ',
+                                  style: TextStyle(fontSize: 13),
+                                ),
+                                Text(
+                                  '10 months ago',
+                                  style: TextStyle(fontSize: 13),
+                                ),
+                              ],
                             ),
                           ],
                         ),
-                      ],
-                    ),
+                        trailing: Icon(Icons.more_vert),
+                      );
+                    },
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemCount: items.length,
-                      itemBuilder: (context, index) {
-                        return ListTile(
-                          onTap: () async {
-                            // TODO: 画面遷移
-                            await Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => VideoDetailPage()
-                              ),
-                            );
-                          },
-                          contentPadding: EdgeInsets.all(8),
-                          leading: Image.network(
-                            'https://i.ytimg.com/vi/PXnqg_Ozouk/hqdefault.jpg',
-                          ),
-                          title: Column(
-                            children: <Widget>[
-                              Text(
-                                '【Flutter超入門】リストを作る方法',
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w500,
-                                ),
-                              ),
-                              Row(
-                                children: <Widget>[
-                                  Text(
-                                    '14K views',
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                  Text(
-                                    ' 3 hours ago',
-                                    style: TextStyle(fontSize: 13),
-                                  ),
-                                ],
-                              )
-                            ],
-                          ),
-                          trailing: Icon(Icons.more_vert),
-                        );
-                      },
-                    ),
-                  ),
-                ];
+                ),
+              ],
             ),
           ),
-        )
-    );
+        ));
   }
 }
